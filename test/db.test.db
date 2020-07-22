@@ -1,0 +1,19 @@
+{"_id":"id1","system":"solar system","inhabited":false,"satellites":["Phobos","Deimos"],"createdAt":{"$$date":1595299086036},"updatedAt":{"$$date":1595299086073}}
+{"_id":"id2","planet":"Earth","system":"solar system","inhabited":true,"humans":{"genders":2,"eyes":true},"createdAt":{"$$date":1595299086041},"updatedAt":{"$$date":1595299086067}}
+{"planet":"Pluton","_id":"id3","createdAt":{"$$date":1595299086046},"updatedAt":{"$$date":1595299086061}}
+{"_id":"id4","planet":"Omicron Persei 8","system":"futurama","inhabited":true,"humans":{"genders":7},"createdAt":{"$$date":1595299086049},"updatedAt":{"$$date":1595299086049}}
+{"_id":"id5","completeData":{"planets":[{"name":"Earth","number":3},{"name":"Mars","number":2},{"name":"Pluton","number":9}]},"createdAt":{"$$date":1595299086052},"updatedAt":{"$$date":1595299086052}}
+{"$$deleted":true,"_id":"id1"}
+{"$$deleted":true,"_id":"id2"}
+{"$$deleted":true,"_id":"id3"}
+{"$$deleted":true,"_id":"id4"}
+{"$$deleted":true,"_id":"id5"}
+{"_id":"id1","planet":"Mars","system":"solar","inhabited":false,"satellites":["Phobos","Deimos"],"createdAt":{"$$date":1595299086127},"updatedAt":{"$$date":1595299086127}}
+{"_id":"id2","planet":"Earth","system":"solar","inhabited":true,"humans":{"genders":2,"eyes":true},"createdAt":{"$$date":1595299086130},"updatedAt":{"$$date":1595299086130}}
+{"_id":"id3","planet":"Jupiter","system":"solar","inhabited":false,"createdAt":{"$$date":1595299086139},"updatedAt":{"$$date":1595299086139}}
+{"_id":"id4","planet":"Omicron Persei 8","system":"futurama","inhabited":true,"humans":{"genders":7},"createdAt":{"$$date":1595299086144},"updatedAt":{"$$date":1595299086144}}
+{"_id":"id5","completeData":{"planets":[{"name":"Earth","number":3},{"name":"Mars","number":2},{"name":"Pluton","number":9}]},"createdAt":{"$$date":1595299086149},"updatedAt":{"$$date":1595299086149}}
+{"$$deleted":true,"_id":"id1"}
+{"$$deleted":true,"_id":"id2"}
+{"$$deleted":true,"_id":"id3"}
+{"$$deleted":true,"_id":"id4"}

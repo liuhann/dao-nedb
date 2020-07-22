@@ -1,0 +1,33 @@
+{
+  "name": "wind-dao-nedb",
+  "version": "1.0.0",
+  "description": "NeDB文档存储库",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./test/start.js",
+    "test": "ava --verbose",
+    "build": "babel src -d build"
+  },
+  "author": {
+    "name": "刘晗",
+    "email": "liuhan@goldwind.com.cn"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^3.8.2"
+  },
+  "dependencies": {
+    "wind-core-dao": "^1.0.0",
+    "glob": "^7.1.6",
+    "mk-dir": "^1.0.1",
+    "nedb": "^1.8.0"
+  },
+  "ava": {
+    "files": [
+      "test/*.test.js"
+    ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

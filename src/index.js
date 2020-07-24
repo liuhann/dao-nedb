@@ -10,7 +10,7 @@ module.exports = {
     // 模块初始化动作，对于核心模块可以进行koa相关插件注册
     // 业务模块可以进行服务创建
     async created(app) {
-        app.dataBaseProducer &&  app.dataBaseProducer.setDatabaseImpl(NeDB, app.config.nedb);
+        app.dataBaseProducer && app.dataBaseProducer.setDatabaseImpl(NeDB, app.config.nedb);
     },
 
     // 模块路由注册，对外提供API可在此写api相关地址

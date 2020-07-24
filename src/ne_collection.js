@@ -220,6 +220,16 @@ class NeCollection extends Collection {
 
         return result.length > 0;
     }
+
+    /**
+     * 字段distinct
+     * @param {String} field 对应字段
+     * @param {Object} query 条件，同find方法对应条件
+     */
+    async distinct (field, query) {
+        const list = await this.find(query);
+        return Array.from(new Set(list.filter(item => item[field]).map(item => item[field])))
+    }
 }
 
 module.exports = NeCollection;

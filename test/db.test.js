@@ -185,6 +185,20 @@ test.serial('Update & Patch', async t => {
 })
 
 
+test.serial('Distinct', async t => {
+    const { coll } = t.context;
+
+    // 获取所有星球
+    const dis = await coll.distinct('planet')
+    t.is(4, dis.length)
+    
+    
+    // 获取宜居的星球名称
+    const qf = await coll.distinct('planet', {
+        inhabited: true
+    })
+    t.is(2, qf.length)
+})
 
 test.serial('Remove', async t => {
 

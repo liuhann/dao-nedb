@@ -1,6 +1,6 @@
 {
   "name": "wind-dao-nedb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NeDB文档存储库",
   "main": "src/index.js",
   "scripts": {

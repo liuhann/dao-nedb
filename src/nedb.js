@@ -12,7 +12,7 @@ class NeDB extends DataBase {
      * @override
      */
     getCollections() {
-        return Object.keys(this.db.getState());
+        return Object.keys(this.collections);
     }
 
     /**

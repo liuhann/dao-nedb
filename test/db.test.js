@@ -91,32 +91,35 @@ test.serial('Querying', async t => {
 
     // 基础条件查询、计数
     const solar = await coll.find({ system: 'solar' });
-    t.is(3, solar.list.length);
+    t.is(3, solar.length);
     t.is(3, await coll.count({ system: 'solar' }));
     
 
     // 正则匹配 包含 /ar/
-    t.is(2, (await coll.find({ planet: /ar/ })).list.length);
+    t.is(2, (await coll.find({ planet: /ar/ })).length);
 
     // 多条件查询 Finding all inhabited planets in the solar system
-    t.is(1, (await coll.find({ system: 'solar', inhabited: true })).list.length);
+    t.is(1, (await coll.find({ system: 'solar', inhabited: true })).length);
 
     // 对象类型字段的递归查询 
-    t.is(1, (await coll.find({ "humans.genders": 2 })).list.length);
+    t.is(1, (await coll.find({ "humans.genders": 2 })).length);
 
     // 支持的数组查询方式 按数组字段查询
-    t.is(1, (await coll.find({ "completeData.planets.name": "Mars" })).list.length);
+    t.is(1, (await coll.find({ "completeData.planets.name": "Mars" })).length);
 
-    t.is(0, (await coll.find({ "completeData.planets.name": "Jupiter" })).list.length);
+    t.is(0, (await coll.find({ "completeData.planets.name": "Jupiter" })).length);
 
     // 支持的数组查询方式 按下标查询
-    t.is(1, (await coll.find({ "completeData.planets.0.name": "Earth" })).list.length);
+    t.is(1, (await coll.find({ "completeData.planets.0.name": "Earth" })).length);
     
     // 操作符 $in. $nin
-    t.is(2, (await coll.find({ planet: { $in: ['Earth', 'Jupiter'] } })).list.length);
+    t.is(2, (await coll.find({ planet: { $in: ['Earth', 'Jupiter'] } })).length);
+
+    // 按id的多个查找
+    t.is(3, (await coll.find({ _id: { $in: ['id1', 'id2', 'id3'] } })).length);
 
     // $gt
-    t.is(1, (await coll.find({ "humans.genders": { $gt: 5 } })).list.length);
+    t.is(1, (await coll.find({ "humans.genders": { $gt: 5 } })).length);
 
     t.pass();
 });
@@ -136,10 +139,10 @@ test.serial('Projection Sort and Limit', async t => {
         limit: 2
     });
 
-    t.is(2, result.list.length);
+    t.is(2, result.length);
 
-    t.is('Jupiter', result.list[0].planet);
-    t.is('Mars', result.list[1].planet);
+    t.is('Jupiter', result[0].planet);
+    t.is('Mars', result[1].planet);
 
     // 查询投影
     const projectResult = await coll.find({ planet: 'Mars' }, {
@@ -148,11 +151,11 @@ test.serial('Projection Sort and Limit', async t => {
         }
     });
     
-    t.is(1, projectResult.list.length)
+    t.is(1, projectResult.length)
 
-    t.is('solar', projectResult.list[0].system)
-    t.is('Mars', projectResult.list[0].planet)
-    t.true(projectResult.list[0].satellites == null)
+    t.is('solar', projectResult[0].system)
+    t.is('Mars', projectResult[0].planet)
+    t.true(projectResult[0].satellites == null)
     t.pass()
 })
 
@@ -169,10 +172,10 @@ test.serial('Update & Patch', async t => {
     t.true(found.system == null)
 
     // 更新字段
-    t.is(2, (await coll.find({ system: 'solar' })).list.length)
+    t.is(2, (await coll.find({ system: 'solar' })).length)
     await coll.update({ system: 'solar' }, { $set: { system: 'solar system' } }, { multi: true })
-    t.is(0, (await coll.find({ system: 'solar' })).list.length) 
-    t.is(2, (await coll.find({ system: 'solar system' })).list.length) 
+    t.is(0, (await coll.find({ system: 'solar' })).length) 
+    t.is(2, (await coll.find({ system: 'solar system' })).length) 
 
     // 删除字段
     await coll.update({ planet: 'Mars' }, { $unset: { planet: true } })

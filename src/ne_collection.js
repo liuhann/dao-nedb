@@ -145,8 +145,8 @@ class NeCollection extends Collection {
         } else {
             const result = await this.find(id);
 
-            if (result.list.length > 0) {
-                return result.list[0];
+            if (result.length > 0) {
+                return result[0];
             } else {
                 return null;
             }
@@ -190,11 +190,7 @@ class NeCollection extends Collection {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve({
-                        list: docs,
-                        skip,
-                        limit
-                    });
+                    resolve(docs);
                 }
             });
         });
@@ -222,7 +218,7 @@ class NeCollection extends Collection {
             limit: 1
         });
 
-        return result.list.length > 0;
+        return result.length > 0;
     }
 }
 
